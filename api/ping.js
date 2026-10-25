@@ -14,6 +14,14 @@ module.exports = (req, res) => {
       '/api/ttsearch?q=<search text>',
       '/api/mediafire?url=<mediafire url>',
       '/api/instagram?url=<instagram url>',
+      '/api/fbdl?url=<facebook url>',
+      '/api/capcut?url=<capcut url>',
+      '/api/pinterest-photo?url=<pin url>',
+      '/api/pinterest-video?url=<pin url>',
+      '/api/twitter?url=<tweet url>',
+      '/api/gdrive?url=<drive url>',
+      '/api/ytmp3?url=<youtube link or song name>',
+      '/api/ytmp4?url=<youtube link>',
       '/api/attp?text=<text>'
     ]
   }, null, 2));

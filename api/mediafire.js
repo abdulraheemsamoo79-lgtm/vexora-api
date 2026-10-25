@@ -75,14 +75,20 @@ module.exports = async (req, res) => {
     const sizeMatch = html.match(/Download file\s*\(([\d.]+\s*[KMGT]B)\)/i)
                    || html.match(/\(?([\d.]+\s*[KMGT]B)\)?\s*<\/a>/i);
 
+    const mime = MIME[ext] || 'application/octet-stream';
+    const fsize = sizeMatch ? sizeMatch[1].replace(/\s+/g, ' ') : null;
     return sendJson(res, 200, {
       status: true,
       creator: 'VEXORA API',
       result: {
         filename,
-        mimetype: MIME[ext] || 'application/octet-stream',
-        filesize: sizeMatch ? sizeMatch[1].replace(/\s+/g, ' ') : null,
-        download_url: downloadUrl
+        fileName: filename,
+        mimetype: mime,
+        fileType: mime,
+        filesize: fsize,
+        size: fsize,
+        download_url: downloadUrl,
+        dl_link: downloadUrl
       }
     });
   } catch (e) {

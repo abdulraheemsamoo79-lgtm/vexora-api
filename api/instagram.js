@@ -50,8 +50,10 @@ module.exports = async (req, res) => {
     }
 
     return sendJson(res, 200, {
-      status: true,
+      status: 200,
+      success: true,
       creator: 'VEXORA API',
+      downloadUrl: video || item.displayUrl,
       result: {
         type: item.type || (video ? 'Video' : 'Image'),
         video: video,
