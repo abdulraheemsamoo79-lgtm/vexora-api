@@ -3,55 +3,306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VEXORA API</title>
+<title>VEXORA API — Free Downloader APIs</title>
+<meta name="description" content="VEXORA API — apni downloader APIs: TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive aur ATTP. Free, bina key ke.">
 <style>
-  body { background:#0b0b10; color:#e8e8ee; font-family:system-ui,Arial,sans-serif; margin:0; padding:24px; }
-  .wrap { max-width:720px; margin:0 auto; }
-  h1 { color:#ff3b3b; letter-spacing:2px; margin-bottom:4px; }
-  .sub { color:#9a9aad; margin-top:0; }
-  .badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:13px; font-weight:700; background:#333; }
-  .live { background:#14532d; color:#4ade80; }
-  .down { background:#7f1d1d; color:#fca5a5; }
-  table { width:100%; border-collapse:collapse; margin-top:20px; }
-  td, th { border-bottom:1px solid #26262e; padding:10px 8px; text-align:left; font-size:14px; }
-  code { color:#ffd166; font-size:13px; word-break:break-all; }
-  .foot { color:#666; font-size:12px; margin-top:24px; text-align:center; }
+  * { box-sizing: border-box; }
+  :root {
+    --bg: #07070c; --card: #101018; --card2: #14141f; --line: #23232f;
+    --red: #ff3131; --red2: #ff5a3c; --gold: #ffb020; --txt: #f2f2f7; --dim: #9a9aad;
+    --green: #2ee06f;
+  }
+  body {
+    margin: 0; background: var(--bg); color: var(--txt);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(600px 320px at 50% -80px, rgba(255,49,49,.28), transparent 65%),
+      radial-gradient(500px 260px at 90% 110%, rgba(255,90,60,.10), transparent 60%);
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 28px 16px 40px; position: relative; }
+  .hero { text-align: center; padding: 18px 0 6px; animation: rise .6s ease both; }
+  .logo {
+    width: 118px; height: 118px; border-radius: 50%; object-fit: cover;
+    border: 3px solid rgba(255,49,49,.75);
+    box-shadow: 0 0 0 6px rgba(255,49,49,.12), 0 0 44px rgba(255,49,49,.45);
+    background: #1a0505;
+  }
+  h1 { margin: 14px 0 2px; font-size: 40px; letter-spacing: 3px; font-weight: 900; }
+  h1 .v { color: var(--red); }
+  .tag { color: var(--dim); margin: 4px auto 14px; max-width: 560px; font-size: 15px; line-height: 1.55; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px;
+    border-radius: 999px; font-size: 13px; font-weight: 700; background: #26262e; color: #ccc;
+    border: 1px solid var(--line);
+  }
+  .badge .dot { width: 9px; height: 9px; border-radius: 50%; background: #888; }
+  .badge.live { background: rgba(46,224,111,.12); color: var(--green); border-color: rgba(46,224,111,.35); }
+  .badge.live .dot { background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 1.6s infinite; }
+  .badge.down { background: rgba(255,49,49,.12); color: #ff7b7b; border-color: rgba(255,49,49,.4); }
+  .badge.down .dot { background: var(--red); }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+  .chip { font-size: 12.5px; color: #d7d7e2; background: var(--card2); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; }
+  .chip b { color: var(--gold); }
+  .card {
+    background: linear-gradient(180deg, var(--card2), var(--card));
+    border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-top: 22px;
+    animation: rise .6s ease both;
+  }
+  .card h2 { margin: 0 0 4px; font-size: 19px; }
+  .card h2 .em { color: var(--red); }
+  .card .sub { color: var(--dim); font-size: 13.5px; margin: 0 0 14px; line-height: 1.5; }
+  .pg-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  select, input[type="text"] {
+    background: #0b0b12; color: var(--txt); border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px; font-size: 14px; outline: none;
+  }
+  select { flex: 0 0 auto; max-width: 100%; }
+  input[type="text"] { flex: 1 1 220px; min-width: 0; }
+  select:focus, input[type="text"]:focus { border-color: var(--red); }
+  .btn {
+    background: linear-gradient(135deg, var(--red), var(--red2)); color: #fff; border: 0;
+    padding: 12px 22px; border-radius: 12px; font-size: 14.5px; font-weight: 800; cursor: pointer;
+    box-shadow: 0 6px 18px rgba(255,49,49,.35);
+  }
+  .btn:active { transform: scale(.97); }
+  .btn:disabled { opacity: .55; cursor: wait; }
+  .pg-out { margin-top: 14px; display: none; }
+  .dl-btn {
+    display: inline-block; margin: 4px 0 10px; background: rgba(46,224,111,.14); color: var(--green);
+    border: 1px solid rgba(46,224,111,.4); padding: 10px 16px; border-radius: 12px;
+    font-weight: 800; text-decoration: none; font-size: 14px;
+  }
+  .pg-out img { max-width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; margin: 6px 0 10px; }
+  pre {
+    background: #0a0a11; border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+    font-size: 12px; line-height: 1.5; color: #c9f7d4; overflow: auto; max-height: 300px; margin: 0;
+    white-space: pre-wrap; word-break: break-all;
+  }
+  .pg-msg { color: var(--dim); font-size: 13.5px; margin: 6px 0; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .ep { background: #0d0d15; border: 1px solid var(--line); border-radius: 14px; padding: 14px; transition: border-color .2s, transform .2s; }
+  .ep:hover { border-color: rgba(255,49,49,.5); transform: translateY(-2px); }
+  .ep .top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .get { background: rgba(46,224,111,.14); color: var(--green); font-size: 10.5px; font-weight: 900; padding: 3px 8px; border-radius: 6px; letter-spacing: 1px; }
+  .imgb { background: rgba(255,176,32,.15); color: var(--gold); }
+  .ep .name { font-weight: 800; font-size: 15px; }
+  .ep code { display: block; color: var(--gold); font-size: 12px; word-break: break-all; margin: 2px 0 6px; }
+  .ep p { margin: 0 0 10px; color: var(--dim); font-size: 13px; line-height: 1.5; }
+  .ep .row { display: flex; gap: 8px; }
+  .mini { flex: 1; background: var(--card2); color: var(--txt); border: 1px solid var(--line); padding: 8px 10px; border-radius: 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+  .mini:active { transform: scale(.97); }
+  .steps { display: grid; gap: 10px; }
+  @media (min-width: 720px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { background: #0d0d15; border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+  .step .n { width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; margin-bottom: 8px; }
+  .step p { margin: 0; color: var(--dim); font-size: 13px; line-height: 1.55; }
+  .step code { color: var(--gold); font-size: 11.5px; word-break: break-all; }
+  .note { border: 1px solid rgba(255,176,32,.4); background: rgba(255,176,32,.07); color: #ffe1a1; border-radius: 14px; padding: 12px 14px; font-size: 13.5px; line-height: 1.55; margin-top: 22px; }
+  .note code { color: var(--gold); }
+  footer { text-align: center; color: #666672; font-size: 12.5px; margin-top: 30px; line-height: 1.7; }
+  footer a { color: var(--red2); text-decoration: none; font-weight: 700; }
+  .chan { display: inline-block; margin-top: 6px; background: #128c4b; color: #fff !important; padding: 10px 18px; border-radius: 999px; font-size: 13.5px; box-shadow: 0 6px 16px rgba(18,140,75,.35); }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>🌕 VEXORA API</h1>
-  <p class="sub">Own downloader APIs for the VEXORA SMD WhatsApp bot. No third-party API drama — if a backend dies, we swap the backend, the bot never stops.</p>
-  <p>Status: <span id="badge" class="badge">checking…</span></p>
-  <table>
-    <tr><th>Endpoint</th><th>Kaam</th></tr>
-    <tr><td><code>/api/ttdl?url=</code></td><td>TikTok video download (simple)</td></tr>
-    <tr><td><code>/api/tiktok-v2?url=</code></td><td>TikTok download + stats</td></tr>
-    <tr><td><code>/api/ttsearch?q=</code></td><td>TikTok search</td></tr>
-    <tr><td><code>/api/mediafire?url=</code></td><td>MediaFire direct link</td></tr>
-    <tr><td><code>/api/instagram?url=</code></td><td>Instagram reel/post download</td></tr>
-    <tr><td><code>/api/fbdl?url=</code></td><td>Facebook video download</td></tr>
-    <tr><td><code>/api/capcut?url=</code></td><td>CapCut template video</td></tr>
-    <tr><td><code>/api/pinterest-photo?url=</code></td><td>Pinterest photo (original quality)</td></tr>
-    <tr><td><code>/api/pinterest-video?url=</code></td><td>Pinterest video</td></tr>
-    <tr><td><code>/api/twitter?url=</code></td><td>Twitter/X video (SD + HD)</td></tr>
-    <tr><td><code>/api/gdrive?url=</code></td><td>Google Drive file download</td></tr>
-    <tr><td><code>/api/ytmp3?url=</code></td><td>YouTube audio (link ya gana ka naam)</td></tr>
-    <tr><td><code>/api/ytmp4?url=</code></td><td>YouTube video</td></tr>
-    <tr><td><code>/api/attp?text=</code></td><td>Animated rainbow text (GIF)</td></tr>
-    <tr><td><code>/api/ping</code></td><td>Health check (JSON)</td></tr>
-  </table>
-  <p class="foot">VEXORA API v1.0 • Powered by VEXORA SMD</p>
+
+  <div class="hero">
+    <img class="logo" src="https://i.ibb.co/HTS7V92c/vexora-v2-3-samurai.png" alt="VEXORA" onerror="this.style.display='none'">
+    <h1><span class="v">VEXORA</span> API</h1>
+    <p class="tag">Apni khud ki downloader APIs — TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive aur bohat kuch. Bot ke liye bani, sab ke liye khuli.</p>
+    <span id="badge" class="badge"><span class="dot"></span><span id="badgeTxt">Status check ho raha hai…</span></span>
+    <div class="chips">
+      <span class="chip">⚡ <b>15</b> Endpoints</span>
+      <span class="chip">🆓 <b>100% Free</b></span>
+      <span class="chip">🔑 <b>No API Key</b></span>
+      <span class="chip">🤖 Bot Ready</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧪 <span class="em">Playground</span> — yahin test karo</h2>
+    <p class="sub">Endpoint chuno, link ya lafz likho, aur result foran yahin dekho. Bot mai lagane se pehle yahan tasalli kar lo.</p>
+    <div class="pg-row">
+      <select id="pgSel"></select>
+      <input type="text" id="pgIn" placeholder="Link yahan paste karo…">
+      <button class="btn" id="pgBtn">Chalao ▶</button>
+    </div>
+    <div class="pg-out" id="pgOut">
+      <p class="pg-msg" id="pgMsg"></p>
+      <div id="pgMedia"></div>
+      <pre id="pgJson" style="display:none"></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📚 Saare <span class="em">Endpoints</span></h2>
+    <p class="sub">Kisi card par "Try" dabao to wo endpoint playground mai khul jayega, "Copy" se pura link copy ho jayega.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="card">
+    <h2>🤖 Apni <span class="em">bot</span> mai kaise use kare?</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span>
+        <p>Apni bot ke code mai API ka address lagao:<br><code>https://vexora-api-orcin.vercel.app</code></p></div>
+      <div class="step"><span class="n">2</span>
+        <p>Jo download chahiye, us endpoint par user ka link bhejo, masalan:<br><code>/api/ttdl?url=&lt;link&gt;</code></p></div>
+      <div class="step"><span class="n">3</span>
+        <p>JSON jawab mai <code>status: true</code> aur download link milega — wahi file user ko bhej do. Bas!</p></div>
+    </div>
+  </div>
+
+  <div class="note">📌 <b>Note:</b> YouTube wale endpoints (<code>/api/ytmp3</code>, <code>/api/ytmp4</code>) filhal backend ki wajah se band hain — YouTube server-side downloading ko sakhti se rokta hai. Baqi saare endpoints live hain. TikTok search (<code>/api/ttsearch</code>) ka backend kabhi kabhi slow ho sakta hai.</div>
+
+  <footer>
+    🌕 <b>VEXORA API</b> v1.2 — Powered by <b>VEXORA SMD</b><br>
+    <a class="chan" href="https://whatsapp.com/channel/0029Vawbj7e5kg7AFF5MuZ28" target="_blank" rel="noopener">📢 WhatsApp Channel Join Karo</a>
+  </footer>
 </div>
+
 <script>
-  fetch('/api/ping').then(r => r.json()).then(d => {
-    var b = document.getElementById('badge');
-    if (d && d.status) { b.textContent = '● LIVE'; b.className = 'badge live'; }
-    else { b.textContent = '● DOWN'; b.className = 'badge down'; }
-  }).catch(() => {
-    var b = document.getElementById('badge');
-    b.textContent = '● DOWN'; b.className = 'badge down';
-  });
+const BASE = location.origin;
+const EPS = [
+  { id:'ttdl',            name:'TikTok Download',   param:'url',  kind:'json', desc:'TikTok video bina watermark, HD quality mai.', ph:'TikTok video ka link paste karo…' },
+  { id:'tiktok-v2',       name:'TikTok V2',         param:'url',  kind:'json', desc:'TikTok video + poori tafseel: author, views, likes, shares.', ph:'TikTok video ka link paste karo…' },
+  { id:'ttsearch',        name:'TikTok Search',     param:'q',    kind:'json', desc:'Naam ya lafz likh kar TikTok videos dhundo.', ph:'Masalan: funny cats' },
+  { id:'mediafire',       name:'MediaFire',         param:'url',  kind:'json', desc:'MediaFire file ka seedha download link (ZIP, APK, kuch bhi).', ph:'MediaFire file ka link paste karo…' },
+  { id:'instagram',       name:'Instagram',         param:'url',  kind:'json', desc:'Instagram reel / post ki video download karo.', ph:'Instagram reel ka link paste karo…' },
+  { id:'fbdl',            name:'Facebook',          param:'url',  kind:'json', desc:'Facebook video — HD aur SD, dono links.', ph:'Facebook video ka link paste karo…' },
+  { id:'capcut',          name:'CapCut',            param:'url',  kind:'json', desc:'CapCut template video bina watermark.', ph:'CapCut template ka link paste karo…' },
+  { id:'pinterest-photo', name:'Pinterest Photo',   param:'url',  kind:'json', desc:'Pinterest photo original (sab se bari) quality mai.', ph:'Pinterest pin ka link paste karo…' },
+  { id:'pinterest-video', name:'Pinterest Video',   param:'url',  kind:'json', desc:'Pinterest video + duration aur size ki maloomat.', ph:'Pinterest pin ka link paste karo…' },
+  { id:'twitter',         name:'Twitter / X',       param:'url',  kind:'json', desc:'Tweet ki video — SD aur HD dono.', ph:'Tweet ka link paste karo…' },
+  { id:'gdrive',          name:'Google Drive',      param:'url',  kind:'json', desc:'Public Google Drive file ka direct download link.', ph:'Google Drive file ka link paste karo…' },
+  { id:'attp',            name:'ATTP Sticker',      param:'text', kind:'img',  desc:'Likhay hue lafz ki rainbow rang-birangi animated GIF.', ph:'Masalan: VEXORA' },
+  { id:'ytmp3',           name:'YouTube MP3',       param:'url',  kind:'json', desc:'⚠ Filhal band — YouTube backend jald wapas ayega.', ph:'YouTube video ka link (filhal band hai)…' },
+  { id:'ytmp4',           name:'YouTube MP4',       param:'url',  kind:'json', desc:'⚠ Filhal band — YouTube backend jald wapas ayega.', ph:'YouTube video ka link (filhal band hai)…' },
+  { id:'ping',            name:'Status (Ping)',     param:'',     kind:'json', desc:'API zinda hai ya nahi — aur saare endpoints ki list.', ph:'' }
+];
+
+const sel = document.getElementById('pgSel');
+const inp = document.getElementById('pgIn');
+const grid = document.getElementById('grid');
+
+function epUrl(ep, val) {
+  if (!ep.param) return BASE + '/api/' + ep.id;
+  return BASE + '/api/' + ep.id + '?' + ep.param + '=' + (val ? encodeURIComponent(val) : '<' + ep.param + '>');
+}
+function cur() { return EPS.find(e => e.id === sel.value) || EPS[0]; }
+
+EPS.forEach(ep => {
+  const o = document.createElement('option');
+  o.value = ep.id; o.textContent = ep.name + '  (/api/' + ep.id + ')';
+  sel.appendChild(o);
+
+  const card = document.createElement('div');
+  card.className = 'ep';
+  card.innerHTML =
+    '<div class="top"><span class="get' + (ep.kind === 'img' ? ' imgb' : '') + '">' +
+    (ep.kind === 'img' ? 'GIF' : 'GET') + '</span><span class="name">' + ep.name + '</span></div>' +
+    '<code>/api/' + ep.id + (ep.param ? '?' + ep.param + '=…' : '') + '</code>' +
+    '<p>' + ep.desc + '</p>' +
+    '<div class="row"><button class="mini try">🧪 Try karo</button><button class="mini copy">📋 Link copy</button></div>';
+  card.querySelector('.try').onclick = () => {
+    sel.value = ep.id; syncInput();
+    document.getElementById('pgIn').focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  card.querySelector('.copy').onclick = async (e) => {
+    try { await navigator.clipboard.writeText(epUrl(ep)); e.target.textContent = '✅ Copy ho gaya!'; }
+    catch (_) { e.target.textContent = epUrl(ep); }
+    setTimeout(() => { e.target.textContent = '📋 Link copy'; }, 1600);
+  };
+  grid.appendChild(card);
+});
+
+function syncInput() {
+  const ep = cur();
+  inp.style.display = ep.param ? '' : 'none';
+  inp.placeholder = ep.ph || 'Link yahan paste karo…';
+}
+sel.onchange = syncInput;
+syncInput();
+
+function pickLink(d) {
+  if (!d) return '';
+  if (typeof d.downloadUrl === 'string') return d.downloadUrl;
+  if (typeof d.download_url === 'string') return d.download_url;
+  const r = d.result;
+  if (typeof r === 'string' && /^https?:/.test(r)) return r;
+  if (r && typeof r === 'object') {
+    return r.video || r.video_download || r.video_hd || r.download_url || r.audio_download || r.video_sd || '';
+  }
+  return d.hd_link || '';
+}
+
+const out = document.getElementById('pgOut');
+const msg = document.getElementById('pgMsg');
+const media = document.getElementById('pgMedia');
+const pre = document.getElementById('pgJson');
+const btn = document.getElementById('pgBtn');
+
+btn.onclick = async () => {
+  const ep = cur();
+  out.style.display = 'block'; media.innerHTML = ''; pre.style.display = 'none';
+  const val = inp.value.trim();
+  if (ep.param && !val) { msg.textContent = '⚠ Pehle kuch likho / link paste karo.'; return; }
+  const url = epUrl(ep, val);
+  if (ep.kind === 'img') {
+    msg.textContent = 'GIF ban raha hai…';
+    const im = new Image();
+    im.onload = () => { msg.textContent = '✅ GIF tayyar:'; media.appendChild(im); };
+    im.onerror = () => { msg.textContent = '❌ GIF nahi bana — dobara try karo.'; };
+    im.src = url; im.alt = 'ATTP GIF';
+    return;
+  }
+  btn.disabled = true; msg.textContent = '⏳ API se jawab aa raha hai… (kabhi kabhi 10-20 second lagte hain)';
+  try {
+    const r = await fetch(url);
+    const d = await r.json();
+    pre.textContent = JSON.stringify(d, null, 2);
+    pre.style.display = 'block';
+    const link = pickLink(d);
+    if (link) {
+      msg.innerHTML = '✅ <b>Ho gaya!</b> Neeche download link hai:';
+      const a = document.createElement('a');
+      a.className = 'dl-btn'; a.href = link; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = '⬇ Download / Link Kholo';
+      media.appendChild(a);
+      if (/\.(jpe?g|png|webp)(\?|$)/i.test(link)) {
+        const im = new Image(); im.src = link; media.appendChild(im);
+      }
+    } else if (d && (d.status === false || d.success === false || d.error)) {
+      msg.textContent = '⚠ API ne jawab dia, lekin kaam nahi hua — wajah neeche JSON mai likhi hai.';
+    } else {
+      msg.textContent = '✅ Jawab aa gaya — tafseel neeche hai.';
+    }
+  } catch (e) {
+    msg.textContent = '❌ API se rabta nahi hua. Thori dair baad dobara try karo.';
+  }
+  btn.disabled = false;
+};
+inp.addEventListener('keydown', e => { if (e.key === 'Enter') btn.click(); });
+
+fetch('/api/ping').then(r => r.json()).then(d => {
+  const b = document.getElementById('badge');
+  if (d && d.status) {
+    b.classList.add('live');
+    document.getElementById('badgeTxt').textContent = 'LIVE — API chal rahi hai';
+  } else throw 0;
+}).catch(() => {
+  const b = document.getElementById('badge');
+  b.classList.add('down');
+  document.getElementById('badgeTxt').textContent = 'API jawab nahi de rahi';
+});
 </script>
 </body>
 </html>
