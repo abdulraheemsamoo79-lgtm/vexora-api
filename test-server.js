@@ -11,12 +11,9 @@ const server = http.createServer((req, res) => {
     return res.end(fs.readFileSync(path.join(__dirname, 'index.html')));
   }
   if (u.pathname.startsWith('/api/')) {
-    const name = u.pathname.replace('/api/', '').replace(/[^a-z0-9-]/gi, '');
-    const file = path.join(__dirname, 'api', name + '.js');
-    if (fs.existsSync(file)) {
-      delete require.cache[require.resolve(file)];
-      return require(file)(req, res);
-    }
+    const routerFile = path.join(__dirname, 'api', '[...slug].js');
+    delete require.cache[require.resolve(routerFile)];
+    return require(routerFile)(req, res);
   }
   res.writeHead(404, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ status: false, message: 'Not found' }));
