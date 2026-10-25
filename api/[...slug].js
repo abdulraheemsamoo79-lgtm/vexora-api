@@ -16,7 +16,13 @@ const handlers = {
   'gdrive': require('../lib/handlers/gdrive'),
   'ytmp3': require('../lib/handlers/ytmp3'),
   'ytmp4': require('../lib/handlers/ytmp4'),
-  'attp': require('../lib/handlers/attp')
+  'attp': require('../lib/handlers/attp'),
+  'ttmp3': require('../lib/handlers/ttmp3'),
+  'ytsearch': require('../lib/handlers/ytsearch'),
+  'qr': require('../lib/handlers/qr'),
+  'weather': require('../lib/handlers/weather'),
+  'lyrics': require('../lib/handlers/lyrics'),
+  'igdp': require('../lib/handlers/igdp')
 };
 
 module.exports = (req, res) => {
