@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEXORA API</title>
+<style>
+  body { background:#0b0b10; color:#e8e8ee; font-family:system-ui,Arial,sans-serif; margin:0; padding:24px; }
+  .wrap { max-width:720px; margin:0 auto; }
+  h1 { color:#ff3b3b; letter-spacing:2px; margin-bottom:4px; }
+  .sub { color:#9a9aad; margin-top:0; }
+  .badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:13px; font-weight:700; background:#333; }
+  .live { background:#14532d; color:#4ade80; }
+  .down { background:#7f1d1d; color:#fca5a5; }
+  table { width:100%; border-collapse:collapse; margin-top:20px; }
+  td, th { border-bottom:1px solid #26262e; padding:10px 8px; text-align:left; font-size:14px; }
+  code { color:#ffd166; font-size:13px; word-break:break-all; }
+  .foot { color:#666; font-size:12px; margin-top:24px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🌕 VEXORA API</h1>
+  <p class="sub">Own downloader APIs for the VEXORA SMD WhatsApp bot. No third-party API drama — if a backend dies, we swap the backend, the bot never stops.</p>
+  <p>Status: <span id="badge" class="badge">checking…</span></p>
+  <table>
+    <tr><th>Endpoint</th><th>Kaam</th></tr>
+    <tr><td><code>/api/ttdl?url=</code></td><td>TikTok video download (simple)</td></tr>
+    <tr><td><code>/api/tiktok-v2?url=</code></td><td>TikTok download + stats</td></tr>
+    <tr><td><code>/api/ttsearch?q=</code></td><td>TikTok search</td></tr>
+    <tr><td><code>/api/mediafire?url=</code></td><td>MediaFire direct link</td></tr>
+    <tr><td><code>/api/instagram?url=</code></td><td>Instagram reel/post download</td></tr>
+    <tr><td><code>/api/attp?text=</code></td><td>Animated rainbow text (GIF)</td></tr>
+    <tr><td><code>/api/ping</code></td><td>Health check (JSON)</td></tr>
+  </table>
+  <p class="foot">VEXORA API v1.0 • Powered by VEXORA SMD</p>
+</div>
+<script>
+  fetch('/api/ping').then(r => r.json()).then(d => {
+    var b = document.getElementById('badge');
+    if (d && d.status) { b.textContent = '● LIVE'; b.className = 'badge live'; }
+    else { b.textContent = '● DOWN'; b.className = 'badge down'; }
+  }).catch(() => {
+    var b = document.getElementById('badge');
+    b.textContent = '● DOWN'; b.className = 'badge down';
+  });
+</script>
+</body>
+</html>
