@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VEXORA API — Free Downloader APIs</title>
-<meta name="description" content="VEXORA API — apni downloader APIs: TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive aur ATTP. Free, bina key ke.">
+<meta name="description" content="VEXORA API — free downloader & utility APIs: TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive, QR, Weather, Lyrics and more. No API key needed.">
 <style>
   * { box-sizing: border-box; }
   :root {
@@ -117,10 +117,10 @@
   <div class="hero">
     <img class="logo" src="https://i.ibb.co/HTS7V92c/vexora-v2-3-samurai.png" alt="VEXORA" onerror="this.style.display='none'">
     <h1><span class="v">VEXORA</span> API</h1>
-    <p class="tag">Apni khud ki downloader APIs — TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive aur bohat kuch. Bot ke liye bani, sab ke liye khuli.</p>
-    <span id="badge" class="badge"><span class="dot"></span><span id="badgeTxt">Status check ho raha hai…</span></span>
+    <p class="tag">Our own free APIs — TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive, plus handy tools like QR codes, weather and lyrics. Built for bots, open for everyone.</p>
+    <span id="badge" class="badge"><span class="dot"></span><span id="badgeTxt">Checking status…</span></span>
     <div class="chips">
-      <span class="chip">⚡ <b>15</b> Endpoints</span>
+      <span class="chip">⚡ <b>21</b> Endpoints</span>
       <span class="chip">🆓 <b>100% Free</b></span>
       <span class="chip">🔑 <b>No API Key</b></span>
       <span class="chip">🤖 Bot Ready</span>
@@ -128,12 +128,12 @@
   </div>
 
   <div class="card">
-    <h2>🧪 <span class="em">Playground</span> — yahin test karo</h2>
-    <p class="sub">Endpoint chuno, link ya lafz likho, aur result foran yahin dekho. Bot mai lagane se pehle yahan tasalli kar lo.</p>
+    <h2>🧪 <span class="em">Playground</span> — test it right here</h2>
+    <p class="sub">Pick an endpoint, paste a link or type a word, and see the result instantly. Test here first, then wire it into your bot with confidence.</p>
     <div class="pg-row">
       <select id="pgSel"></select>
-      <input type="text" id="pgIn" placeholder="Link yahan paste karo…">
-      <button class="btn" id="pgBtn">Chalao ▶</button>
+      <input type="text" id="pgIn" placeholder="Paste a link here…">
+      <button class="btn" id="pgBtn">Run ▶</button>
     </div>
     <div class="pg-out" id="pgOut">
       <p class="pg-msg" id="pgMsg"></p>
@@ -143,49 +143,55 @@
   </div>
 
   <div class="card">
-    <h2>📚 Saare <span class="em">Endpoints</span></h2>
-    <p class="sub">Kisi card par "Try" dabao to wo endpoint playground mai khul jayega, "Copy" se pura link copy ho jayega.</p>
+    <h2>📚 All <span class="em">Endpoints</span></h2>
+    <p class="sub">Tap <b>Try it</b> on any card to open that endpoint in the playground, or <b>Copy URL</b> to copy the full endpoint address.</p>
     <div class="grid" id="grid"></div>
   </div>
 
   <div class="card">
-    <h2>🤖 Apni <span class="em">bot</span> mai kaise use kare?</h2>
+    <h2>🤖 How to use it in <span class="em">your bot</span></h2>
     <div class="steps">
       <div class="step"><span class="n">1</span>
-        <p>Apni bot ke code mai API ka address lagao:<br><code>https://vexora-api-orcin.vercel.app</code></p></div>
+        <p>Put the API base address in your bot code:<br><code>https://vexora-api-orcin.vercel.app</code></p></div>
       <div class="step"><span class="n">2</span>
-        <p>Jo download chahiye, us endpoint par user ka link bhejo, masalan:<br><code>/api/ttdl?url=&lt;link&gt;</code></p></div>
+        <p>Send the user's link to the endpoint you need, for example:<br><code>/api/ttdl?url=&lt;link&gt;</code></p></div>
       <div class="step"><span class="n">3</span>
-        <p>JSON jawab mai <code>status: true</code> aur download link milega — wahi file user ko bhej do. Bas!</p></div>
+        <p>The JSON reply contains <code>status: true</code> and the download link — just send that file to the user. Done!</p></div>
     </div>
   </div>
 
-  <div class="note">📌 <b>Note:</b> YouTube wale endpoints (<code>/api/ytmp3</code>, <code>/api/ytmp4</code>) filhal backend ki wajah se band hain — YouTube server-side downloading ko sakhti se rokta hai. Baqi saare endpoints live hain. TikTok search (<code>/api/ttsearch</code>) ka backend kabhi kabhi slow ho sakta hai.</div>
+  <div class="note">📌 <b>Note:</b> The YouTube download endpoints (<code>/api/ytmp3</code>, <code>/api/ytmp4</code>) are paused for now because their download backend is down — YouTube blocks server-side downloading hard. YouTube <b>search</b> works fine. Every other endpoint is live; TikTok search (<code>/api/ttsearch</code>) can be slow at times.</div>
 
   <footer>
-    🌕 <b>VEXORA API</b> v1.2 — Powered by <b>VEXORA SMD</b><br>
-    <a class="chan" href="https://whatsapp.com/channel/0029Vawbj7e5kg7AFF5MuZ28" target="_blank" rel="noopener">📢 WhatsApp Channel Join Karo</a>
+    🌕 <b>VEXORA API</b> v1.3 — Powered by <b>VEXORA SMD</b><br>
+    <a class="chan" href="https://whatsapp.com/channel/0029Vawbj7e5kg7AFF5MuZ28" target="_blank" rel="noopener">📢 Join our WhatsApp Channel</a>
   </footer>
 </div>
 
 <script>
 const BASE = location.origin;
 const EPS = [
-  { id:'ttdl',            name:'TikTok Download',   param:'url',  kind:'json', desc:'TikTok video bina watermark, HD quality mai.', ph:'TikTok video ka link paste karo…' },
-  { id:'tiktok-v2',       name:'TikTok V2',         param:'url',  kind:'json', desc:'TikTok video + poori tafseel: author, views, likes, shares.', ph:'TikTok video ka link paste karo…' },
-  { id:'ttsearch',        name:'TikTok Search',     param:'q',    kind:'json', desc:'Naam ya lafz likh kar TikTok videos dhundo.', ph:'Masalan: funny cats' },
-  { id:'mediafire',       name:'MediaFire',         param:'url',  kind:'json', desc:'MediaFire file ka seedha download link (ZIP, APK, kuch bhi).', ph:'MediaFire file ka link paste karo…' },
-  { id:'instagram',       name:'Instagram',         param:'url',  kind:'json', desc:'Instagram reel / post ki video download karo.', ph:'Instagram reel ka link paste karo…' },
-  { id:'fbdl',            name:'Facebook',          param:'url',  kind:'json', desc:'Facebook video — HD aur SD, dono links.', ph:'Facebook video ka link paste karo…' },
-  { id:'capcut',          name:'CapCut',            param:'url',  kind:'json', desc:'CapCut template video bina watermark.', ph:'CapCut template ka link paste karo…' },
-  { id:'pinterest-photo', name:'Pinterest Photo',   param:'url',  kind:'json', desc:'Pinterest photo original (sab se bari) quality mai.', ph:'Pinterest pin ka link paste karo…' },
-  { id:'pinterest-video', name:'Pinterest Video',   param:'url',  kind:'json', desc:'Pinterest video + duration aur size ki maloomat.', ph:'Pinterest pin ka link paste karo…' },
-  { id:'twitter',         name:'Twitter / X',       param:'url',  kind:'json', desc:'Tweet ki video — SD aur HD dono.', ph:'Tweet ka link paste karo…' },
-  { id:'gdrive',          name:'Google Drive',      param:'url',  kind:'json', desc:'Public Google Drive file ka direct download link.', ph:'Google Drive file ka link paste karo…' },
-  { id:'attp',            name:'ATTP Sticker',      param:'text', kind:'img',  desc:'Likhay hue lafz ki rainbow rang-birangi animated GIF.', ph:'Masalan: VEXORA' },
-  { id:'ytmp3',           name:'YouTube MP3',       param:'url',  kind:'json', desc:'⚠ Filhal band — YouTube backend jald wapas ayega.', ph:'YouTube video ka link (filhal band hai)…' },
-  { id:'ytmp4',           name:'YouTube MP4',       param:'url',  kind:'json', desc:'⚠ Filhal band — YouTube backend jald wapas ayega.', ph:'YouTube video ka link (filhal band hai)…' },
-  { id:'ping',            name:'Status (Ping)',     param:'',     kind:'json', desc:'API zinda hai ya nahi — aur saare endpoints ki list.', ph:'' }
+  { id:'ttdl',            name:'TikTok Download',   param:'url',      kind:'json', desc:'TikTok video without watermark, in HD quality.', ph:'Paste a TikTok video link…' },
+  { id:'tiktok-v2',       name:'TikTok V2',         param:'url',      kind:'json', desc:'TikTok video plus full details: author, views, likes, shares.', ph:'Paste a TikTok video link…' },
+  { id:'ttsearch',        name:'TikTok Search',     param:'q',        kind:'json', desc:'Search TikTok videos by name or keyword.', ph:'e.g. funny cats' },
+  { id:'ttmp3',           name:'TikTok MP3',        param:'url',      kind:'json', desc:'Only the audio / song from a TikTok video.', ph:'Paste a TikTok video link…' },
+  { id:'mediafire',       name:'MediaFire',         param:'url',      kind:'json', desc:'Direct download link for any MediaFire file (ZIP, APK, anything).', ph:'Paste a MediaFire file link…' },
+  { id:'instagram',       name:'Instagram',         param:'url',      kind:'json', desc:'Download an Instagram reel or post video.', ph:'Paste an Instagram reel link…' },
+  { id:'igdp',            name:'Instagram DP',      param:'username', kind:'json', desc:'Anyone\u2019s Instagram profile photo in HD, plus follower counts.', ph:'e.g. instagram' },
+  { id:'fbdl',            name:'Facebook',          param:'url',      kind:'json', desc:'Facebook video — both HD and SD links.', ph:'Paste a Facebook video link…' },
+  { id:'capcut',          name:'CapCut',            param:'url',      kind:'json', desc:'CapCut template video without watermark.', ph:'Paste a CapCut template link…' },
+  { id:'pinterest-photo', name:'Pinterest Photo',   param:'url',      kind:'json', desc:'Pinterest photo in original (largest) quality.', ph:'Paste a Pinterest pin link…' },
+  { id:'pinterest-video', name:'Pinterest Video',   param:'url',      kind:'json', desc:'Pinterest video, plus duration and size info.', ph:'Paste a Pinterest pin link…' },
+  { id:'twitter',         name:'Twitter / X',       param:'url',      kind:'json', desc:'Video from a tweet — SD and HD both.', ph:'Paste a tweet link…' },
+  { id:'gdrive',          name:'Google Drive',      param:'url',      kind:'json', desc:'Direct download link for a public Google Drive file.', ph:'Paste a Google Drive file link…' },
+  { id:'ytsearch',        name:'YouTube Search',    param:'q',        kind:'json', desc:'Search YouTube videos: title, thumbnail, views, duration.', ph:'e.g. Alan Walker Faded' },
+  { id:'attp',            name:'ATTP Sticker',      param:'text',     kind:'img',  desc:'Animated rainbow GIF of any word you type.', ph:'e.g. VEXORA' },
+  { id:'qr',              name:'QR Code',           param:'text',     kind:'img',  desc:'Turn any text or link into a QR code image.', ph:'e.g. https://google.com' },
+  { id:'weather',         name:'Weather',           param:'city',     kind:'json', desc:'Current weather plus today\u2019s high/low for any city in the world.', ph:'e.g. Karachi' },
+  { id:'lyrics',          name:'Lyrics',            param:'q',        kind:'json', desc:'Find song lyrics. Best format: Artist - Song Title.', ph:'e.g. Adele - Hello' },
+  { id:'ytmp3',           name:'YouTube MP3',       param:'url',      kind:'json', desc:'⚠ Paused for now — the YouTube download backend is down.', ph:'YouTube link (paused for now)…' },
+  { id:'ytmp4',           name:'YouTube MP4',       param:'url',      kind:'json', desc:'⚠ Paused for now — the YouTube download backend is down.', ph:'YouTube link (paused for now)…' },
+  { id:'ping',            name:'Status (Ping)',     param:'',         kind:'json', desc:'Check whether the API is alive — plus the full endpoint list.', ph:'' }
 ];
 
 const sel = document.getElementById('pgSel');
@@ -207,19 +213,19 @@ EPS.forEach(ep => {
   card.className = 'ep';
   card.innerHTML =
     '<div class="top"><span class="get' + (ep.kind === 'img' ? ' imgb' : '') + '">' +
-    (ep.kind === 'img' ? 'GIF' : 'GET') + '</span><span class="name">' + ep.name + '</span></div>' +
+    (ep.kind === 'img' ? 'IMG' : 'GET') + '</span><span class="name">' + ep.name + '</span></div>' +
     '<code>/api/' + ep.id + (ep.param ? '?' + ep.param + '=…' : '') + '</code>' +
     '<p>' + ep.desc + '</p>' +
-    '<div class="row"><button class="mini try">🧪 Try karo</button><button class="mini copy">📋 Link copy</button></div>';
+    '<div class="row"><button class="mini try">🧪 Try it</button><button class="mini copy">📋 Copy URL</button></div>';
   card.querySelector('.try').onclick = () => {
     sel.value = ep.id; syncInput();
     document.getElementById('pgIn').focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   card.querySelector('.copy').onclick = async (e) => {
-    try { await navigator.clipboard.writeText(epUrl(ep)); e.target.textContent = '✅ Copy ho gaya!'; }
+    try { await navigator.clipboard.writeText(epUrl(ep)); e.target.textContent = '✅ Copied!'; }
     catch (_) { e.target.textContent = epUrl(ep); }
-    setTimeout(() => { e.target.textContent = '📋 Link copy'; }, 1600);
+    setTimeout(() => { e.target.textContent = '📋 Copy URL'; }, 1600);
   };
   grid.appendChild(card);
 });
@@ -227,7 +233,7 @@ EPS.forEach(ep => {
 function syncInput() {
   const ep = cur();
   inp.style.display = ep.param ? '' : 'none';
-  inp.placeholder = ep.ph || 'Link yahan paste karo…';
+  inp.placeholder = ep.ph || 'Paste a link here…';
 }
 sel.onchange = syncInput;
 syncInput();
@@ -239,7 +245,7 @@ function pickLink(d) {
   const r = d.result;
   if (typeof r === 'string' && /^https?:/.test(r)) return r;
   if (r && typeof r === 'object') {
-    return r.video || r.video_download || r.video_hd || r.download_url || r.audio_download || r.video_sd || '';
+    return r.video || r.video_download || r.video_hd || r.download_url || r.audio_download || r.audio || r.dp || r.video_sd || '';
   }
   return d.hd_link || '';
 }
@@ -254,17 +260,17 @@ btn.onclick = async () => {
   const ep = cur();
   out.style.display = 'block'; media.innerHTML = ''; pre.style.display = 'none';
   const val = inp.value.trim();
-  if (ep.param && !val) { msg.textContent = '⚠ Pehle kuch likho / link paste karo.'; return; }
+  if (ep.param && !val) { msg.textContent = '⚠ Type something or paste a link first.'; return; }
   const url = epUrl(ep, val);
   if (ep.kind === 'img') {
-    msg.textContent = 'GIF ban raha hai…';
+    msg.textContent = ep.id === 'qr' ? 'Making your QR code…' : 'Making your GIF…';
     const im = new Image();
-    im.onload = () => { msg.textContent = '✅ GIF tayyar:'; media.appendChild(im); };
-    im.onerror = () => { msg.textContent = '❌ GIF nahi bana — dobara try karo.'; };
-    im.src = url; im.alt = 'ATTP GIF';
+    im.onload = () => { msg.textContent = '✅ Ready:'; media.appendChild(im); };
+    im.onerror = () => { msg.textContent = '❌ Could not generate the image — please try again.'; };
+    im.src = url; im.alt = ep.name;
     return;
   }
-  btn.disabled = true; msg.textContent = '⏳ API se jawab aa raha hai… (kabhi kabhi 10-20 second lagte hain)';
+  btn.disabled = true; msg.textContent = '⏳ Contacting the API… (it can take 10-20 seconds sometimes)';
   try {
     const r = await fetch(url);
     const d = await r.json();
@@ -272,21 +278,21 @@ btn.onclick = async () => {
     pre.style.display = 'block';
     const link = pickLink(d);
     if (link) {
-      msg.innerHTML = '✅ <b>Ho gaya!</b> Neeche download link hai:';
+      msg.innerHTML = '✅ <b>Done!</b> Here is your link:';
       const a = document.createElement('a');
       a.className = 'dl-btn'; a.href = link; a.target = '_blank'; a.rel = 'noopener';
-      a.textContent = '⬇ Download / Link Kholo';
+      a.textContent = '⬇ Open Download Link';
       media.appendChild(a);
-      if (/\.(jpe?g|png|webp)(\?|$)/i.test(link)) {
+      if (/\.(jpe?g|png|webp)(\?|$)/i.test(link) || /scontent|cdninstagram|fbcdn/.test(link)) {
         const im = new Image(); im.src = link; media.appendChild(im);
       }
     } else if (d && (d.status === false || d.success === false || d.error)) {
-      msg.textContent = '⚠ API ne jawab dia, lekin kaam nahi hua — wajah neeche JSON mai likhi hai.';
+      msg.textContent = '⚠ The API replied, but the job failed — the reason is in the JSON below.';
     } else {
-      msg.textContent = '✅ Jawab aa gaya — tafseel neeche hai.';
+      msg.textContent = '✅ Response received — full details below.';
     }
   } catch (e) {
-    msg.textContent = '❌ API se rabta nahi hua. Thori dair baad dobara try karo.';
+    msg.textContent = '❌ Could not reach the API. Please try again in a little while.';
   }
   btn.disabled = false;
 };
@@ -296,12 +302,12 @@ fetch('/api/ping').then(r => r.json()).then(d => {
   const b = document.getElementById('badge');
   if (d && d.status) {
     b.classList.add('live');
-    document.getElementById('badgeTxt').textContent = 'LIVE — API chal rahi hai';
+    document.getElementById('badgeTxt').textContent = 'LIVE — API is running';
   } else throw 0;
 }).catch(() => {
   const b = document.getElementById('badge');
   b.classList.add('down');
-  document.getElementById('badgeTxt').textContent = 'API jawab nahi de rahi';
+  document.getElementById('badgeTxt').textContent = 'API is not responding';
 });
 </script>
 </body>
