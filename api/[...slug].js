@@ -22,8 +22,7 @@ const handlers = {
   'qr': require('../lib/handlers/qr'),
   'weather': require('../lib/handlers/weather'),
   'lyrics': require('../lib/handlers/lyrics'),
-  'igdp': require('../lib/handlers/igdp'),
-  'pair': require('../lib/handlers/pair')
+  'igdp': require('../lib/handlers/igdp')
 };
 
 module.exports = (req, res) => {
