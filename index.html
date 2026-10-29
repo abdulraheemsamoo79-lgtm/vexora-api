@@ -120,7 +120,7 @@
     <p class="tag">Our own free APIs — TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive, plus handy tools like QR codes, weather and lyrics. Built for bots, open for everyone.</p>
     <span id="badge" class="badge"><span class="dot"></span><span id="badgeTxt">Checking status…</span></span>
     <div class="chips">
-      <span class="chip">⚡ <b>21</b> Endpoints</span>
+      <span class="chip">⚡ <b>34</b> Endpoints</span>
       <span class="chip">🆓 <b>100% Free</b></span>
       <span class="chip">🔑 <b>No API Key</b></span>
       <span class="chip">🤖 Bot Ready</span>
@@ -189,6 +189,19 @@ const EPS = [
   { id:'qr',              name:'QR Code',           param:'text',     kind:'img',  desc:'Turn any text or link into a QR code image.', ph:'e.g. https://google.com' },
   { id:'weather',         name:'Weather',           param:'city',     kind:'json', desc:'Current weather plus today\u2019s high/low for any city in the world.', ph:'e.g. Karachi' },
   { id:'lyrics',          name:'Lyrics',            param:'q',        kind:'json', desc:'Find song lyrics. Best format: Artist - Song Title.', ph:'e.g. Adele - Hello' },
+  { id:'spotifydl',       name:'Spotify Download',  param:'url',      kind:'json', desc:'Spotify song as MP3 — title and artist read from Spotify, audio matched from YouTube.', ph:'Paste a Spotify track link…' },
+  { id:'ytdl',            name:'YouTube Downloader', param:'url',     kind:'json', desc:'YouTube video or audio in one call — add &type=mp3 for audio only; mp4 is the default.', ph:'Paste a YouTube link…' },
+  { id:'aptoide',         name:'Aptoide APK',       param:'q',        kind:'json', desc:'Search Aptoide and get the top app: name, package, icon and direct APK link.', ph:'e.g. WhatsApp' },
+  { id:'npmsearch',       name:'npm Search',        param:'q',        kind:'json', desc:'Search npm packages: name, version, description and link.', ph:'e.g. axios' },
+  { id:'duckduckgo',      name:'Web Search',        param:'q',        kind:'json', desc:'Search the web and get result titles with direct links.', ph:'e.g. Pakistan news' },
+  { id:'githubstalk',     name:'GitHub Stalk',      param:'username', kind:'json', desc:'GitHub profile details: name, followers, following, repo count and avatar.', ph:'e.g. torvalds' },
+  { id:'gitclone',        name:'Git Clone Link',    param:'url',      kind:'json', desc:'Get the ZIP download link and filename for any public GitHub repo.', ph:'Paste a GitHub repo link…' },
+  { id:'ssweb',           name:'Website Screenshot', param:'url',     kind:'img',  desc:'A full screenshot (JPEG) of any website.', ph:'e.g. https://google.com' },
+  { id:'translate',       name:'Translate',         param:'text',     kind:'json', desc:'Translate any text — add &to=<lang code> to the URL, e.g. &to=ur for Urdu.', ph:'e.g. Hello, how are you?' },
+  { id:'searchgroups',    name:'WhatsApp Group Search', param:'q',    kind:'json', desc:'Find public WhatsApp group invite links by keyword. Can be slow at times.', ph:'e.g. movies' },
+  { id:'detiknews',       name:'Detik News',        param:'',         kind:'json', desc:'Latest headlines from Detik (Indonesia) with links.', ph:'' },
+  { id:'cekkhodam',       name:'Cek Khodam',        param:'nama',     kind:'json', desc:'Fun: get a random khodam (guardian spirit) for any name.', ph:'e.g. Abdul' },
+  { id:'tahukahkamu',     name:'Tahukah Kamu',      param:'',         kind:'json', desc:'Fun: a random \u201cdid you know?\u201d fact.', ph:'' },
   { id:'ytmp3',           name:'YouTube MP3',       param:'url',      kind:'json', desc:'⚠ Paused for now — the YouTube download backend is down.', ph:'YouTube link (paused for now)…' },
   { id:'ytmp4',           name:'YouTube MP4',       param:'url',      kind:'json', desc:'⚠ Paused for now — the YouTube download backend is down.', ph:'YouTube link (paused for now)…' },
   { id:'ping',            name:'Status (Ping)',     param:'',         kind:'json', desc:'Check whether the API is alive — plus the full endpoint list.', ph:'' }
