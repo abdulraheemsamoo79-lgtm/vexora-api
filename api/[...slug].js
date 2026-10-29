@@ -22,7 +22,20 @@ const handlers = {
   'qr': require('../lib/handlers/qr'),
   'weather': require('../lib/handlers/weather'),
   'lyrics': require('../lib/handlers/lyrics'),
-  'igdp': require('../lib/handlers/igdp')
+  'igdp': require('../lib/handlers/igdp'),
+  'spotifydl': require('../lib/handlers/spotifydl'),
+  'ytdl': require('../lib/handlers/ytdl'),
+  'aptoide': require('../lib/handlers/aptoide'),
+  'npmsearch': require('../lib/handlers/npmsearch'),
+  'duckduckgo': require('../lib/handlers/duckduckgo'),
+  'githubstalk': require('../lib/handlers/githubstalk'),
+  'gitclone': require('../lib/handlers/gitclone'),
+  'ssweb': require('../lib/handlers/ssweb'),
+  'translate': require('../lib/handlers/translate'),
+  'searchgroups': require('../lib/handlers/searchgroups'),
+  'detiknews': require('../lib/handlers/detiknews'),
+  'cekkhodam': require('../lib/handlers/cekkhodam'),
+  'tahukahkamu': require('../lib/handlers/tahukahkamu')
 };
 
 module.exports = (req, res) => {
