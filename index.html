@@ -120,7 +120,7 @@
     <p class="tag">Our own free APIs — TikTok, Facebook, Instagram, Pinterest, CapCut, Twitter, MediaFire, Google Drive, plus handy tools like QR codes, weather and lyrics. Built for bots, open for everyone.</p>
     <span id="badge" class="badge"><span class="dot"></span><span id="badgeTxt">Checking status…</span></span>
     <div class="chips">
-      <span class="chip">⚡ <b>34</b> Endpoints</span>
+      <span class="chip">⚡ <b>60</b> Endpoints</span>
       <span class="chip">🆓 <b>100% Free</b></span>
       <span class="chip">🔑 <b>No API Key</b></span>
       <span class="chip">🤖 Bot Ready</span>
@@ -202,6 +202,32 @@ const EPS = [
   { id:'detiknews',       name:'Detik News',        param:'',         kind:'json', desc:'Latest headlines from Detik (Indonesia) with links.', ph:'' },
   { id:'cekkhodam',       name:'Cek Khodam',        param:'nama',     kind:'json', desc:'Fun: get a random khodam (guardian spirit) for any name.', ph:'e.g. Abdul' },
   { id:'tahukahkamu',     name:'Tahukah Kamu',      param:'',         kind:'json', desc:'Fun: a random \u201cdid you know?\u201d fact.', ph:'' },
+  { id:'quran-ayah',      name:'Quran Ayah',        param:'ayah',     kind:'json', desc:'One Quran verse with translation — use a reference like 2:255, add &edition=en.asad to change translation.', ph:'e.g. 2:255' },
+  { id:'quran-surah',     name:'Quran Surah',       param:'number',   kind:'json', desc:'A full Surah with translation — by Surah number (1–114).', ph:'e.g. 1' },
+  { id:'quran-search',    name:'Quran Search',      param:'q',        kind:'json', desc:'Search the Quran by keyword and get matching verses.', ph:'e.g. mercy' },
+  { id:'crypto',          name:'Crypto Prices',     param:'ids',      kind:'json', desc:'Live crypto prices — comma-separated coin ids, add &vs=pkr for rupees.', ph:'e.g. bitcoin,ethereum' },
+  { id:'exchange',        name:'Currency Exchange', param:'base',     kind:'json', desc:'Exchange rates for any base currency.', ph:'e.g. USD' },
+  { id:'imdb',            name:'IMDb Movie',        param:'q',        kind:'json', desc:'Movie details and ratings from IMDb.', ph:'e.g. Inception' },
+  { id:'ip-lookup',       name:'IP Lookup',         param:'query',    kind:'json', desc:'Location and ISP details for any IP address.', ph:'e.g. 8.8.8.8' },
+  { id:'wikipedia',       name:'Wikipedia',         param:'title',    kind:'json', desc:'Wikipedia article summary for any topic.', ph:'e.g. Pakistan' },
+  { id:'dictionary',      name:'Dictionary',        param:'word',     kind:'json', desc:'Word meanings, phonetics and examples.', ph:'e.g. hello' },
+  { id:'urban',           name:'Urban Dictionary',  param:'term',     kind:'json', desc:'Slang meanings from Urban Dictionary.', ph:'e.g. cool' },
+  { id:'shorten',         name:'URL Shortener',     param:'url',      kind:'json', desc:'Shorten any long link into a tiny URL.', ph:'Paste a long link…' },
+  { id:'anime-gif',       name:'Anime GIF',         param:'action',   kind:'json', desc:'Random anime reaction GIF — hug, pat, kiss, slap and more.', ph:'e.g. hug' },
+  { id:'apk-search',      name:'APK Search',        param:'q',        kind:'json', desc:'Search apps and get APK details and links.', ph:'e.g. WhatsApp' },
+  { id:'archive-search',  name:'Archive.org Search', param:'q',       kind:'json', desc:'Search archive.org — movies, books, audio and more.', ph:'e.g. Charlie Chaplin' },
+  { id:'books',           name:'Book Search',       param:'q',        kind:'json', desc:'Search books: title, author, cover and details.', ph:'e.g. clean code' },
+  { id:'fda',             name:'FDA Drug Info',     param:'q',        kind:'json', desc:'Drug information from the US FDA database.', ph:'e.g. ibuprofen' },
+  { id:'periodic-table',  name:'Periodic Table',    param:'element',  kind:'json', desc:'Details of any chemical element.', ph:'e.g. oxygen' },
+  { id:'pokedex',         name:'Pokedex',           param:'pokemon',  kind:'json', desc:'Pokemon details: type, stats, abilities and image.', ph:'e.g. pikachu' },
+  { id:'trivia',          name:'Trivia Quiz',       param:'amount',   kind:'json', desc:'Random trivia questions — set how many you want.', ph:'e.g. 3' },
+  { id:'fact',            name:'Random Fact',       param:'',         kind:'json', desc:'A random interesting fact.', ph:'' },
+  { id:'joke',            name:'Jokes',             param:'category', kind:'json', desc:'Random jokes — try categories like Programming, Misc or Pun.', ph:'e.g. Programming' },
+  { id:'quote',           name:'Quotes',            param:'',         kind:'json', desc:'A random inspirational quote.', ph:'' },
+  { id:'advice',          name:'Advice',            param:'',         kind:'json', desc:'A random piece of life advice.', ph:'' },
+  { id:'geocode',         name:'Geocode',           param:'city',     kind:'json', desc:'Coordinates and details for any city name.', ph:'e.g. Karachi' },
+  { id:'memes',           name:'Memes',             param:'',         kind:'json', desc:'Random fresh memes.', ph:'' },
+  { id:'canvas-heart',    name:'Canvas Heart',      param:'avatar',   kind:'json', desc:'Make a heart-style DP frame from any avatar image link.', ph:'Paste an image link…' },
   { id:'ytmp3',           name:'YouTube MP3',       param:'url',      kind:'json', desc:'⚠ Paused for now — the YouTube download backend is down.', ph:'YouTube link (paused for now)…' },
   { id:'ytmp4',           name:'YouTube MP4',       param:'url',      kind:'json', desc:'⚠ Paused for now — the YouTube download backend is down.', ph:'YouTube link (paused for now)…' },
   { id:'ping',            name:'Status (Ping)',     param:'',         kind:'json', desc:'Check whether the API is alive — plus the full endpoint list.', ph:'' }
