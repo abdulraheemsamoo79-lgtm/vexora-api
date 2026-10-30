@@ -61,7 +61,8 @@ const handlers = {
   'advice': require('../lib/handlers/advice'),
   'geocode': require('../lib/handlers/geocode'),
   'memes': require('../lib/handlers/memes'),
-  'canvas-heart': require('../lib/handlers/canvas-heart')
+  'canvas-heart': require('../lib/handlers/canvas-heart'),
+  'ai': require('../lib/handlers/ai')
 };
 
 module.exports = (req, res) => {
