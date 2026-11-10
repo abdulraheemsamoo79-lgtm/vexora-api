@@ -63,7 +63,6 @@ const handlers = {
   'memes': require('../lib/handlers/memes'),
   'canvas-heart': require('../lib/handlers/canvas-heart'),
   'ai': require('../lib/handlers/ai'),
-  'invtest': require('../lib/handlers/invtest'),
   'xhamster': require('../lib/handlers/xhamster')
 };
 
