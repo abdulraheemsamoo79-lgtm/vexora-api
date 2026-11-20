@@ -15,7 +15,6 @@ const handlers = {
   'twitter': require('../lib/handlers/twitter'),
   'gdrive': require('../lib/handlers/gdrive'),
   'ytmp3': require('../lib/handlers/ytmp3'),
-  'ytdebug': require('../lib/handlers/ytdebug'),
   'ytmp4': require('../lib/handlers/ytmp4'),
   'attp': require('../lib/handlers/attp'),
   'ttmp3': require('../lib/handlers/ttmp3'),
